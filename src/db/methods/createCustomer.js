@@ -4,7 +4,7 @@ const assert = require('./assert')
 const Customer = mongoose.model('Customer')
 
 
-async function createCustomer({ firstname = null, lastname = null, email = null }) {
+async function createCustomer({ firstname, lastname, email }) {
   assert(!!firstname, true, 'firstname_missing')  
   assert(firstname, String, 'firstname_not_string')
 

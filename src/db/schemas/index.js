@@ -1,3 +1,5 @@
 module.exports = [
-  require('./Customer')
+  require('./Customer'),
+  require('./Product'),
+  require('./Basket')
 ]
