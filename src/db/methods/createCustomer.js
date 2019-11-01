@@ -28,13 +28,13 @@ async function createCustomer({ firstname, lastname, email }) {
     lastname,
     email
   })
-  const result = await newCustomer.save()
+  const savedCustomer = await newCustomer.save()
   return {
-    _id: result._id,
-    firstname: result.firstname,
-    lastname: result.lastname,
-    email: result.email,
-    inShop: result.inShop
+    customerId: savedCustomer._id,
+    firstname: savedCustomer.firstname,
+    lastname: savedCustomer.lastname,
+    email: savedCustomer.email,
+    inShop: savedCustomer.inShop
   }
 }
 

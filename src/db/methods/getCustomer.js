@@ -5,6 +5,7 @@ const Customer = mongoose.model('Customer')
 
 async function getCustomer({ email = null }) {
   assert(!!email, true, 'email_missing')
+  assert(email, String, 'email_not_string')
 
   const customer = await Customer.findOne(
     { email },

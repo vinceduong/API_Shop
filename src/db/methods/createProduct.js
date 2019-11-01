@@ -15,24 +15,21 @@ async function createProduct({ name, key, price }) {
 
   const product = await Product.findOne(
     { key },
-    {
-      _id: 1
-    }
+    { _id: 1 }
   )
-  console.log('customer found', customer)
-  assert(!!product, false, 'customer_exists')
+  assert(!!product, false, 'key__already_xists')
 
   const newProduct = new Product({
     name,
     key,
     price
   })
-  const result = await newProduct.save()
+  const savedProduct = await newProduct.save()
   return {
-    _id: result._id,
-    key: key,
-    name: result.name,
-    price: result.price,
+    productId: savedProduct._id,
+    key: savedProduct.key,
+    name: savedProduct.name,
+    price: savedProduct.price,
   }
 }
 

@@ -1,16 +1,18 @@
 const mongoose = require('../connection')
 const assert = require('./assert')
+const getBasketProducts = require('./getBasketProducts')
 
 const Customer = mongoose.model('Customer')
+const Basket = mongoose.model('Basket')
 
-async function customerLeaveShop({ _id }) {
-  assert(_id, String, 'id_is_not_string')
-  assert(!!_id, true, 'id_is_missing')
-  assert(_id.isValidObjectId(), true, 'id_is_not_valid')
+async function customerLeaveShop({ customerId }) {
+  assert(!!customerId, true, 'customer_id_is_missing')
+  assert(customerId, String, 'customer_id_is_not_string')
+  assert(customerId.isValidObjectId(), true, 'customer_id_is_not_valid')
 
   const customer = await Customer.findOne(
     {
-      _id: _id.toObjectId(),
+      _id: customerId.toObjectId(),
     },
     {
       _id: 1,
@@ -20,19 +22,51 @@ async function customerLeaveShop({ _id }) {
   assert(!!customer, true, 'customer_does_not_exist')
   assert(customer.inShop, true, 'customer_already_outside_shop')
 
-  const updatedCustomer = await Customer.findOneAndUpdate(
-    { _id: _id.toObjectId() },
-    { $set: { inShop: false } },
-    {
-      new: true,
-      projection: {
-        _id: 1,
-        inShop: 1
+  const [currentBasket, updatedCustomer] = await Promise.all([
+    Basket.findOneAndUpdate(
+      {
+        customerId,
+        isClosed: false,
+      },
+      {
+        $set: {
+          isClosed: true,
+          endStanp: Date.now()
+        }
+      },
+      {
+        new: true
       }
-    }
-  )
+    ),
+    Customer.findOneAndUpdate(
+      { _id: customerId.toObjectId() },
+      { $set: { inShop: false } },
+      {
+        new: true,
+        projection: {
+          _id: 1,
+          inShop: 1
+        }
+      }
+    )
+  ])
 
-  return updatedCustomer
+  const finalProducts = await getBasketProducts(basketId)
+
+  return {
+    customer: {
+      customerId: updatedCustomer._id,
+      inShop: updatedCustomer.inShop
+    },
+    basket: {
+      basketId: currentBasket._id,
+      customerId: currentBasket.customerId,
+      startStamp: currentBasket.startStamp,
+      endStamp: currentBasket.endStamp,
+      products: finalProducts,
+      isClosed: currentBasket.isClosed,
+    }
+  }
 }
 
 module.exports = customerLeaveShop
