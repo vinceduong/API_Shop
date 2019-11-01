@@ -6,5 +6,6 @@ module.exports = {
   createProduct: require('./createProduct'),
   customerAddProduct: require('./customerAddProduct'),
   customerDeleteProduct: require('./customerDeleteProduct'),
-  getBasket: require('./getBasket')
+  getBasket: require('./getBasket'),
+  getProducts: require('./getProducts')
 }

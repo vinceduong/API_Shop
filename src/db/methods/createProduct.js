@@ -26,7 +26,6 @@ async function createProduct({ name, key, price }) {
   })
   const savedProduct = await newProduct.save()
   return {
-    productId: savedProduct._id,
     key: savedProduct.key,
     name: savedProduct.name,
     price: savedProduct.price,

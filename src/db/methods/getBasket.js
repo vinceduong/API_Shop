@@ -3,6 +3,7 @@ const assert = require('./assert')
 
 const getBasketActions = require('./getBasketActions')
 const getBasketProducts = require('./getBasketProducts')
+const getPriceFromBasketProducts = require('./getPriceFromBasketProducts')
 
 const Basket = mongoose.model('Basket')
 
@@ -22,6 +23,8 @@ async function getBasket({ basketId }) {
     getBasketProducts(basketId)
   ])
 
+  const price = await getPriceFromBasketProducts(products)
+
   return {
     basket: {
       basketId: basket._id,
@@ -30,6 +33,7 @@ async function getBasket({ basketId }) {
       endStamp: basket.endStamp,
       actions,
       products,
+      price,
       isClosed: basket.isClosed,
     }
   }

@@ -1,7 +1,7 @@
 const mongoose = require('../connection')
 const assert = require('./assert')
 const getBasketProducts = require('./getBasketProducts')
-
+const getPriceFromBasketProducts = require('./getPriceFromBasketProducts')
 const Customer = mongoose.model('Customer')
 const Basket = mongoose.model('Basket')
 
@@ -52,7 +52,7 @@ async function customerLeaveShop({ customerId }) {
   ])
 
   const finalProducts = await getBasketProducts(basketId)
-
+  const finalPrice = await getPriceFromBasketProducts(finalProducts)
   return {
     customer: {
       customerId: updatedCustomer._id,
@@ -64,6 +64,7 @@ async function customerLeaveShop({ customerId }) {
       startStamp: currentBasket.startStamp,
       endStamp: currentBasket.endStamp,
       products: finalProducts,
+      price: finalPrice,
       isClosed: currentBasket.isClosed,
     }
   }

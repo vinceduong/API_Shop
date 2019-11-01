@@ -31,5 +31,6 @@ router.post('/customer-delete-product', requestHandler('customerDeleteProduct'))
 //GET
 router.get('/get-customer', requestHandler('getCustomer'))
 router.get('/get-basket', requestHandler('getBasket'))
+router.get('/get-products', requestHandler('getProducts'))
 
 module.exports = router

@@ -49,6 +49,7 @@ async function customerEnterShop({ customerId }) {
     basket: {
       basketId: savedBasket._id,
       products: [],
+      price: 0,
       startStamp: savedBasket.startStamp,
       isClosed: savedBasket.isClosed,
       customerId: savedBasket.customerId

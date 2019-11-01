@@ -48,11 +48,13 @@ async function customerDeleteProduct({ customerId, productKey }) {
   await newBasketAction.save()
 
   const newProducts = await getBasketProducts(currentBasket._id)
+  const newPrice = await getPriceFromBasketProducts(newProducts)
 
   return {
     basket: {
       basketId: currentBasket._id,
       products: newProducts,
+      price: newPrice,
       startStamp: currentBasket.startStamp,
       isClosed: currentBasket.isClosed,
       customerId: currentBasket.customerId
