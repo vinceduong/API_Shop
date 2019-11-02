@@ -8,7 +8,7 @@ All customers actions are stored and you can access them !
 
 #### Requirements:
 * MongoDB: https://docs.mongodb.com/manual/installation/
-* Having a mongod instance launched
+* Having a mongod instance launched: ```mongod --fork --logpath /var/log/mongod.log```
 * NodeJS: https://nodejs.org/en/download/
 
 #### Cloning from github
@@ -25,6 +25,7 @@ All customers actions are stored and you can access them !
 * Debug mode: ```npm run debug```
 
 ## Launch customer use case script
+Having the server launched in another terminal, you can run this command: 
 ```npm run script```
 
 ## Postman requests example here:
