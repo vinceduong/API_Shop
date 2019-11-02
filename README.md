@@ -29,7 +29,7 @@ All customers actions are stored and you can access them !
 * Normal mode: ```npm start```
 * Debug mode: ```npm run debug```
 
-## Launch customer use case script
+### Launch customer use case script
 Having the server launched in another terminal, you can run this command: 
 ```npm run script```
 
