@@ -8,7 +8,7 @@ All customers actions are stored and you can access them !
 
 #### Requirements:
 * MongoDB: https://docs.mongodb.com/manual/installation/
-* Having a mongod instance launched: ```mongod --fork --logpath /var/log/mongod.log```
+* Having a mongod instance launched from the project root directory: ```mongod --dbpath ./mongodb-data```
 * NodeJS: https://nodejs.org/en/download/
 
 #### Cloning from github
