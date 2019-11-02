@@ -6,23 +6,31 @@ All customers actions are stored and you can access them !
 
 ## Installing the project
 
-Requirements:
+#### Requirements:
 * MongoDB: https://docs.mongodb.com/manual/installation/
 * Having a mongod instance launched
 * NodeJS: https://nodejs.org/en/download/
 
-### Cloning from github
+#### Cloning from github
 ```git clone "https://github.com/vinceduong/API_Shop.git" && cd API_shop```
 
-### Installing npm dependencies
+#### Installing npm dependencies
 ```npm install```
 
-### Filling the database with some data
+#### Filling the database with some data
 ```npm run seed```
 
-### Launch the server
+#### Launch the server
 * Normal mode: ```npm start```
 * Debug mode: ```npm run debug```
 
 ## Launch customer use case script
 ```npm run script```
+
+## Postman requests example here:
+
+Import collection from Postman, paste this link : 
+
+https://www.getpostman.com/collections/20e37d9851c959239113
+
+All endpoints have a request example !
