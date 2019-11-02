@@ -8,11 +8,16 @@ All customers actions are stored and you can access them !
 
 #### Requirements:
 * MongoDB: https://docs.mongodb.com/manual/installation/
-* Having a mongod instance launched from the project root directory: ```mongod --dbpath ./mongodb-data```
 * NodeJS: https://nodejs.org/en/download/
 
 #### Cloning from github
 ```git clone "https://github.com/vinceduong/API_Shop.git" && cd API_shop```
+
+#### Create the database folder at project root directory
+```mkdir mongodb-data```
+
+### Launch a mongod instance
+```mongod --dbpath ./mongodb-data```
 
 #### Installing npm dependencies
 ```npm install```
