@@ -1,12 +1,15 @@
 const mongoose = require('../connection')
 const assert = require('./assert')
 const getBasketProducts = require('./getBasketProducts')
+const getPriceFromBasketProducts = require('./getPriceFromBasketProducts')
 
 const Product = mongoose.model('Product')
 const Basket = mongoose.model('Basket')
 const BasketAction = mongoose.model('BasketAction')
 
 async function customerDeleteProduct({ customerId, productKey }) {
+  console.debug('customerAddProduct', arguments[0])
+
   assert(!!customerId, true, 'customerId_is_missing')
   assert(customerId, String, 'customerId_is_not_string')
   assert(customerId.isValidObjectId(), true, 'customerId_is_not_valid')

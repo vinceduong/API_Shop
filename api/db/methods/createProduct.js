@@ -4,6 +4,7 @@ const assert = require('./assert')
 const Product = mongoose.model('Product')
 
 async function createProduct({ name, key, price }) {
+  console.debug('createProduct', arguments[0])
   assert(!!name, true, 'name_missing')  
   assert(name, String, 'name_not_string')
 

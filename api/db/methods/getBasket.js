@@ -8,6 +8,8 @@ const getPriceFromBasketProducts = require('./getPriceFromBasketProducts')
 const Basket = mongoose.model('Basket')
 
 async function getBasket({ basketId }) {
+  console.debug('getBasket', arguments[0])
+
   assert(!!basketId, true, 'basket_id_missing')
   assert(basketId, String, 'basket_id_not_string')
   assert(basketId.isValidObjectId(), true, 'customer_id_is_not_valid')
@@ -26,16 +28,14 @@ async function getBasket({ basketId }) {
   const price = await getPriceFromBasketProducts(products)
 
   return {
-    basket: {
-      basketId: basket._id,
-      customerId: basket.customerId,
-      startStamp: basket.startStamp,
-      endStamp: basket.endStamp,
-      actions,
-      products,
-      price,
-      isClosed: basket.isClosed,
-    }
+    basketId: basket._id,
+    customerId: basket.customerId,
+    startStamp: basket.startStamp,
+    endStamp: basket.endStamp,
+    actions,
+    products,
+    price,
+    isClosed: basket.isClosed,
   }
 }
 

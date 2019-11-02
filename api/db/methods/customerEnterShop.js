@@ -5,6 +5,8 @@ const Customer = mongoose.model('Customer')
 const Basket = mongoose.model('Basket')
 
 async function customerEnterShop({ customerId }) {
+  console.debug('customerEnterShop', arguments[0])
+
   assert(!!customerId, true, 'customerId_is_missing')
   assert(customerId, String, 'customerId_is_not_string')
   assert(customerId.isValidObjectId(), true, 'customerId_is_not_valid')
@@ -32,6 +34,7 @@ async function customerEnterShop({ customerId }) {
       { $set: { inShop: true } },
       {
         new: true,
+        useFindAndModify: false,
         projection: {
           _id: 1,
           inShop: 1,

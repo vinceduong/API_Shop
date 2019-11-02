@@ -8,6 +8,8 @@ const Basket = mongoose.model('Basket')
 const BasketAction = mongoose.model('BasketAction')
 
 async function customerAddProduct({ customerId, productKey }) {
+  console.debug('customerAddProduct', arguments[0])
+
   assert(!!customerId, true, 'customerId_is_missing')
   assert(customerId, String, 'customerId_is_not_string')
   assert(customerId.isValidObjectId(), true, 'customerId_is_not_valid')
@@ -35,7 +37,6 @@ async function customerAddProduct({ customerId, productKey }) {
   assert(!!product, true, 'product_does_not_exist')
   assert(!!currentBasket, true, 'customer_is_not_in_shop')
 
-  console.log('currentBasket', currentBasket)
   const newBasketAction = new BasketAction({
     customerId: customerId.toObjectId(),
     basketId: currentBasket._id, 

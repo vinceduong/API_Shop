@@ -4,6 +4,8 @@ const assert = require('./assert')
 const Customer = mongoose.model('Customer')
 
 async function getCustomer({ email = null }) {
+  console.debug('getCustomer', arguments[0])
+
   assert(!!email, true, 'email_missing')
   assert(email, String, 'email_not_string')
 
@@ -20,7 +22,13 @@ async function getCustomer({ email = null }) {
 
   assert(!!customer, true, 'customer_does_not_exist')
 
-  return customer
+  return {
+    customerId: customer.id,
+    fistname: customer.firstname,
+    lastname: customer.lastname,
+    email: customer.email,
+    inShop: customer.inShop,
+  }
 }
 
 module.exports = getCustomer

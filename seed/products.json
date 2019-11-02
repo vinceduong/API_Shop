@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Eau Volvic",
+    "key": "water_volvic",
+    "price": 1 
+  },
+  {
+    "name": "Eau Vittel",
+    "key": "water_vittel",
+    "price": 2
+  },
+  {
+    "name": "Eau Badoit",
+    "key": "water_batoit",
+    "price": 1 
+  },
+  {
+    "name": "Eau Perrier",
+    "key": "water_perrier",
+    "price": 1 
+  }
+]

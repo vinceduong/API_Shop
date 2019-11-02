@@ -5,6 +5,7 @@ const Customer = mongoose.model('Customer')
 
 
 async function createCustomer({ firstname, lastname, email }) {
+  console.debug('createCustomer', arguments[0])
   assert(!!firstname, true, 'firstname_missing')  
   assert(firstname, String, 'firstname_not_string')
 

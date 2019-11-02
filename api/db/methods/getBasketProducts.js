@@ -12,9 +12,7 @@ async function getBasketProducts(basketId) {
       type: 1
     }
   )
-  console.log('actions', actions)
   const productsKey = [ ...new Set(actions.map(({ productKey }) => productKey)) ]
-  console.log('productsKeys', productsKey)
   const basketProducts = productsKey.reduce((acc, key) => {
     acc[key] = {
       productKey: key,
@@ -23,7 +21,7 @@ async function getBasketProducts(basketId) {
     return acc
   }, {})
   actions.forEach(({ productKey, type }) => {
-    basketProducts[productKey].quantity += type === 'add' ? 1 : -1
+    basketProducts[productKey].quantity = basketProducts[productKey].quantity += type === 'add' ? 1 : -1
   })
 
   return (

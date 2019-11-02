@@ -6,6 +6,8 @@ const Customer = mongoose.model('Customer')
 const Basket = mongoose.model('Basket')
 
 async function customerLeaveShop({ customerId }) {
+  console.debug('customerLeaveShop', arguments[0])
+
   assert(!!customerId, true, 'customer_id_is_missing')
   assert(customerId, String, 'customer_id_is_not_string')
   assert(customerId.isValidObjectId(), true, 'customer_id_is_not_valid')
@@ -35,6 +37,7 @@ async function customerLeaveShop({ customerId }) {
         }
       },
       {
+        useFindAndModify: false,
         new: true
       }
     ),
@@ -43,6 +46,7 @@ async function customerLeaveShop({ customerId }) {
       { $set: { inShop: false } },
       {
         new: true,
+        useFindAndModify: false,
         projection: {
           _id: 1,
           inShop: 1
@@ -51,7 +55,7 @@ async function customerLeaveShop({ customerId }) {
     )
   ])
 
-  const finalProducts = await getBasketProducts(basketId)
+  const finalProducts = await getBasketProducts(currentBasket._id)
   const finalPrice = await getPriceFromBasketProducts(finalProducts)
   return {
     customer: {
