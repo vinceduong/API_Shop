@@ -16,7 +16,7 @@ All customers actions are stored and you can access them !
 #### Create the database folder at project root directory
 ```mkdir mongodb-data```
 
-### Launch a mongod instance
+#### Launch a mongod instance
 ```mongod --dbpath ./mongodb-data```
 
 #### Installing npm dependencies
