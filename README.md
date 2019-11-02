@@ -37,6 +37,6 @@ Having the server launched in another terminal, you can run this command:
 
 Import collection from Postman, paste this link : 
 
-https://www.getpostman.com/collections/20e37d9851c959239113
+```https://www.getpostman.com/collections/20e37d9851c959239113```
 
 All endpoints have a request example !
