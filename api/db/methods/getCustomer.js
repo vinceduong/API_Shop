@@ -20,6 +20,7 @@ async function getCustomer({ email = null }) {
     }
   )
 
+  console.log('customer', customer)
   assert(!!customer, true, 'customer_does_not_exist')
 
   return {

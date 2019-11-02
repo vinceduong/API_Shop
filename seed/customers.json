@@ -1,12 +1,12 @@
 [
   {
-    "fistname": "Jean",
+    "firstname": "Jean",
     "lastname": "Dujardin",
     "email": "jean.dujardin@mail.com",
     "inShop": false
   },
   {
-    "fistname": "Barack",
+    "firstname": "Barack",
     "lastname": "Obama",
     "email": "barack.obama@mail.com",
     "inShop": false

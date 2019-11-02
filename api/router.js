@@ -13,7 +13,7 @@ const requestHandler = methodName => {
       res.status(200)
       res.send(result)
     } catch(error) {
-      console.log('error', error)
+      console.error(error)
       res.status(400)
       res.send({ error: error.message })
     }
